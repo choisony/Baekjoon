@@ -1,0 +1,6 @@
+t = int(input())
+n = t%2
+if n%2==1:
+    print("SK")
+else:
+    print("CY")
