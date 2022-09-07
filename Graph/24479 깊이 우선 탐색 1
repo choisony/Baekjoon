@@ -1,4 +1,30 @@
-n,m,r = map(int,input().split())
+def dfs(visited,graph,r):
+    global count
+    count +=1
+    visited[r] = count
+    for i in graph[r]:
+        if visited[i] ==0 :
+            dfs(visited,graph,i)
 
-for i in range(m):
+n,m,r = map(int,input().split())
+visited = [0]*(n+1)
+graph= {}
+count =0
+for i in range(n):
     u,v = map(int,input().split())
+    if u in graph:
+        graph[u].append(v)
+    else:
+        graph[u] = [v]
+    if v in graph:
+        graph[v].append(u)
+    else:
+        graph[v] = [u]
+
+for i in graph:
+    graph[i].sort()
+dfs(visited,graph,r)
+
+
+for i in visited[1:]:
+    print(i)
