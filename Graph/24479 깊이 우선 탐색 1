@@ -1,10 +1,16 @@
+import sys
+limit_number = 100000
+sys.setrecursionlimit(limit_number)
+
+
 def dfs(visited,graph,r):
     global count
     count +=1
-    visited[r] = count
-    for i in graph[r]:
-        if visited[i] ==0 :
-            dfs(visited,graph,i)
+    if r in graph:
+        visited[r] = count
+        for i in graph[r]:
+            if visited[i] ==0 :
+                dfs(visited,graph,i)
 
 n,m,r = map(int,input().split())
 visited = [0]*(n+1)
@@ -21,10 +27,14 @@ for i in range(n):
     else:
         graph[v] = [u]
 
+
+
 for i in graph:
     graph[i].sort()
 dfs(visited,graph,r)
 
-
-for i in visited[1:]:
-    print(i)
+if visited[1]==0:
+    print(0)
+else:
+    for i in visited[1:]:
+        print(i)
