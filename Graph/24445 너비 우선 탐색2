@@ -1,31 +1,29 @@
 import sys
 from collections import deque
-sys.setrecursionlimit(10**9)
 
-def bfs(start):
+sys.setrecursionlimit(10 ** 9)
+
+
+def bfs(r):
     global count
-    visited[start] = count
-    q.append(start)
-
-    while(q):
+    visited[r] = count
+    q.append(r)
+    while (q):
         next = q.popleft()
         for i in graph[next]:
-            if visited[i]==0:
-                count +=1
-                visited[i]= count
+            if visited[i] == 0:
+                count += 1
+                visited[i] = count
                 q.append(i)
 
 
-
-
-
-
-n,m,r = map(int,sys.stdin.readline().split())
-visited = [0] * (n+1)
-graph = [[] for _ in range(n+1)]
+n, m, r = map(int, sys.stdin.readline().split())
+visited = [0] * (n + 1)
+graph = [[] for _ in range(n + 1)]
 count = 1
+
 for i in range(m):
-    u,v = map(int,sys.stdin.readline().split())
+    u, v = map(int, sys.stdin.readline().split())
     graph[u].append(v)
     graph[v].append(u)
 
