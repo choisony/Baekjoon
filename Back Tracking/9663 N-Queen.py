@@ -18,7 +18,6 @@ def n_queens(i):
 
 n= int(input())
 
-
 answer= 0
 chess=[0]*n
 n_queens(0)
