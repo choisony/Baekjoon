@@ -1,3 +1,20 @@
+import heapq
+n = int(input())
+d=[]
+for _ in range(n):
+    heapq.heappush(d,int(input()))
+if n==1:
+    print(0)
+    exit()
+ans = 0
+while(len(d)>1):
+    temp = heapq.heappop(d) + heapq.heappop(d)
+    ans+=temp
+    heapq.heappush(d,temp)
+print(ans)
+
+###--------------------------------------위에는 힙, 아래는 덱--------------------------------------
+
 from collections import deque
 
 n = int(input())
